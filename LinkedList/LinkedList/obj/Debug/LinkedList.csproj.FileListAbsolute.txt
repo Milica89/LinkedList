@@ -1,0 +1,5 @@
+D:\Users\Milica\Repos\LinkedList\LinkedList\LinkedList\obj\Debug\LinkedList.csprojResolveAssemblyReference.cache
+D:\Users\Milica\Repos\LinkedList\LinkedList\LinkedList\bin\Debug\LinkedList.exe
+D:\Users\Milica\Repos\LinkedList\LinkedList\LinkedList\bin\Debug\LinkedList.pdb
+D:\Users\Milica\Repos\LinkedList\LinkedList\LinkedList\obj\Debug\LinkedList.exe
+D:\Users\Milica\Repos\LinkedList\LinkedList\LinkedList\obj\Debug\LinkedList.pdb
