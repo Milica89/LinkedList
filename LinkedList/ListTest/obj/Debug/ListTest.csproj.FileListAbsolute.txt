@@ -1,7 +1,0 @@
-D:\Users\Milica\Repos\LinkedList\LinkedList\ListTest\bin\Debug\ListTest.dll
-D:\Users\Milica\Repos\LinkedList\LinkedList\ListTest\bin\Debug\ListTest.pdb
-D:\Users\Milica\Repos\LinkedList\LinkedList\ListTest\bin\Debug\LinkedList.exe
-D:\Users\Milica\Repos\LinkedList\LinkedList\ListTest\bin\Debug\LinkedList.pdb
-D:\Users\Milica\Repos\LinkedList\LinkedList\ListTest\obj\Debug\ListTest.csprojResolveAssemblyReference.cache
-D:\Users\Milica\Repos\LinkedList\LinkedList\ListTest\obj\Debug\ListTest.dll
-D:\Users\Milica\Repos\LinkedList\LinkedList\ListTest\obj\Debug\ListTest.pdb

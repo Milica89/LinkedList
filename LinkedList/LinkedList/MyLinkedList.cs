@@ -8,127 +8,119 @@ namespace LinkedList
 {
     public class MyLinkedList<T> : IMyLinkedList<T>
     {
-        private class Element
+        public class Element
         {
             public T Value;
             public Element Next;
             public Element Previous;
-            
+
         }
 
-        public int Size;
-        private Element FirstElement;
-        private Element LastElement;
-        
+        public int Size { get; private set; }
+        private Element FrontElement;
+        private Element BackElement;
+        private Element LastDeletedElement;
 
-        public void AddFirst(T elementToAdd)
-        {
-            Size++;
-            var newElement = new Element() 
-            {
-                Value = elementToAdd
-            };
-            if (FirstElement == null)
-            {                
-                FirstElement = newElement;
-                LastElement = FirstElement;
-            }
-            else
-            {
-                FirstElement.Previous = newElement;
-                newElement.Next = FirstElement;                
-                FirstElement = newElement;
-            }
-        }
 
-        public void AddLast(T elementToAdd)
+        public void AddToFront(T elementToAdd)
         {
             Size++;
             var newElement = new Element()
             {
                 Value = elementToAdd
             };
-            if (LastElement == null)
-            {                
-                LastElement = newElement;
-                FirstElement = LastElement;
-            }
-            else 
+            if (FrontElement == null)
             {
-                newElement.Previous = LastElement;
-                LastElement.Next = newElement;
-                LastElement = newElement;
+                FrontElement = newElement;
+                BackElement = FrontElement;
+            }
+            else
+            {
+                FrontElement.Previous = newElement;
+                newElement.Next = FrontElement;
+                FrontElement = newElement;
             }
         }
 
-        public T ViewFirst()
+        public void AddToBack(T elementToAdd)
         {
-            if (Size == 0)
+            Size++;
+            var newElement = new Element()
             {
-                throw new InvalidOperationException("list is empty!");
+                Value = elementToAdd
+            };
+            if (BackElement == null)
+            {
+                BackElement = newElement;
+                FrontElement = BackElement;
             }
-
-            return this.FirstElement.Value; 
+            else
+            {
+                newElement.Previous = BackElement;
+                BackElement.Next = newElement;
+                BackElement = newElement;
+            }
         }
 
-        public T ViewLast()
+        public T ViewFrontElement()
         {
-            if (Size == 0)
-            {
-                throw new InvalidOperationException("list is empty!");
-            }
+            VerifyListNotEmpty();
 
-            return this.LastElement.Value;
+            return this.FrontElement.Value;
         }
 
-        public void RemoveFirst()
+        public T ViewBackElement()
         {
-            if (Size == 0)
-            {
-                throw new InvalidOperationException("list is empty!");
-            }
+            VerifyListNotEmpty();
+
+            return this.BackElement.Value;
+        }
+
+        public Element RemoveFrontElement()
+        {
+            VerifyListNotEmpty();
             Size--;
-            FirstElement = FirstElement.Next;
-            FirstElement.Previous = null;
+            LastDeletedElement = FrontElement;
+            FrontElement = FrontElement.Next;
+            FrontElement.Previous = null;
+            return LastDeletedElement;
+
         }
 
-        public void RemoveLast()
+        public Element RemoveBackElement()
         {
-            if (Size == 0)
-            {
-                throw new InvalidOperationException("list is empty!");
-            }
+            VerifyListNotEmpty();
             Size--;
-            LastElement = LastElement.Previous;
-            LastElement.Next = null;
+            LastDeletedElement = BackElement;
+            BackElement = BackElement.Previous;
+            BackElement.Next = null;
+            return LastDeletedElement;
+
         }
 
         public void ShowAllElements()
         {
-            Element ElementToWrite = FirstElement;
-            if (Size == 0)
-            {
-                Console.WriteLine("list is empty!");
-            }
-            while (ElementToWrite != null)
+            VerifyListNotEmpty();
+            Element ElementToWrite = FrontElement;            
+            while (ElementToWrite != BackElement.Next)
             {
                 Console.WriteLine(ElementToWrite.Value);
                 ElementToWrite = ElementToWrite.Next;
             }
+            //Console.WriteLine(BackElement.Value);
         }
 
         public void ClearList()
         {
-            LastElement = null;
-            FirstElement = null;
+            BackElement = null;
+            FrontElement = null;
             Size = 0;
+        }
 
-            //Element ElementToRemove = FirstElement;
-            //while (ElementToRemove != null)
-            //{
-            //    ElementToRemove = null;
-            //    ElementToRemove = ElementToRemove.Next;
-            //}
+        private void VerifyListNotEmpty()
+        {
+            if (Size == 0)
+                throw new InvalidOperationException("list is empty!");
         }
     }
 }

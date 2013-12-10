@@ -8,13 +8,14 @@ namespace LinkedList
 {
     interface IMyLinkedList<T>
     {
-        void AddFirst(T element);
-        void AddLast(T element);
-        T ViewFirst();
-        T ViewLast();
-        void RemoveFirst();
-        void RemoveLast();
+        void AddToFront(T element);
+        void AddToBack(T element);
+        T ViewFrontElement();
+        T ViewBackElement();
+        MyLinkedList<T>.Element RemoveFrontElement();
+        MyLinkedList<T>.Element RemoveBackElement();
         void ShowAllElements();        
         void ClearList();
+        int Size { get; }
     }
 }

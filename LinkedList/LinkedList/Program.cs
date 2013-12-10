@@ -14,25 +14,25 @@ namespace LinkedList
 
             Console.WriteLine("AddFirst 1, 2, 3; AddLast 4, 5, 6: ");
 
-            NewList.AddFirst(1);
-            NewList.AddFirst(2);
-            NewList.AddFirst(3);
-            NewList.AddLast(4);
-            NewList.AddLast(5);
-            NewList.AddLast(6);
+            NewList.AddToFront(1);
+            NewList.AddToFront(2);
+            NewList.AddToFront(3);
+            NewList.AddToBack(4);
+            NewList.AddToBack(5);
+            NewList.AddToBack(6);
 
             NewList.ShowAllElements();
             
             Console.WriteLine("List has " + NewList.Size + " elements");
 
-            Console.WriteLine("first element: " + NewList.ViewFirst());
+            Console.WriteLine("first element: " + NewList.ViewFrontElement());
 
-            Console.WriteLine("last element: " + NewList.ViewLast());
+            Console.WriteLine("last element: " + NewList.ViewBackElement());
 
             Console.WriteLine("removing first 2 elements: ");
 
-            NewList.RemoveFirst();
-            NewList.RemoveFirst();
+            Console.WriteLine("removed element: " + NewList.RemoveFrontElement().Value);
+            Console.WriteLine("removed element: " + NewList.RemoveFrontElement().Value);
 
             NewList.ShowAllElements();
 
@@ -40,23 +40,32 @@ namespace LinkedList
 
             Console.WriteLine("removing the last element: ");
 
-            NewList.RemoveLast();
+            Console.WriteLine("removed element: " + NewList.RemoveBackElement().Value);
 
             NewList.ShowAllElements();
 
             Console.WriteLine("List has " + NewList.Size + " elements");
 
+            
+
             Console.WriteLine("clearing the list..");
 
             NewList.ClearList();
+            
 
-            NewList.ShowAllElements();
-
+            try
+            {
+                NewList.ShowAllElements();
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.Message); 
+            }
             Console.WriteLine("Trying to delete last element:");
 
             try
             {
-                NewList.RemoveLast();
+                NewList.RemoveBackElement();
             }
             catch (InvalidOperationException e)
             {
