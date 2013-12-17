@@ -25,7 +25,7 @@ namespace MyLinkedListTest
             list.AddToFront(thirdElement);
 
             //assert
-            Assert.AreEqual(list.Size, expectedSize);
+            Assert.AreEqual(expectedSize, list.Size);
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace MyLinkedListTest
             list.AddToFront(thirdElement);
 
             //assert
-            Assert.AreEqual(list.Size, expectedSize);            
+            Assert.AreEqual(expectedSize, list.Size);            
         }
 
         [TestMethod]
@@ -158,6 +158,7 @@ namespace MyLinkedListTest
 
             //assert
             Assert.AreEqual(removedElement.Value, thirdElement);
+            Assert.AreEqual(secondElement, list.ViewFrontElement());
         }
 
         [TestMethod]
@@ -177,6 +178,7 @@ namespace MyLinkedListTest
 
             //assert
             Assert.AreEqual(removedElement.Value, firstElement);
+            Assert.AreEqual(list.ViewBackElement(), secondElement);
         }
 
         [TestMethod]
